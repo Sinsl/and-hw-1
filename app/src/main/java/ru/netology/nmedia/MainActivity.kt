@@ -1,6 +1,8 @@
 package ru.netology.nmedia
 
 import android.os.Bundle
+import android.text.Html
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
