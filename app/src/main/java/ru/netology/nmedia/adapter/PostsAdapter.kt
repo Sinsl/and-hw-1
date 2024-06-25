@@ -24,7 +24,6 @@ class PostsAdapter(private val onInteractionListener: OnInteractionListener):  R
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
-        Log.i("pi", "onCreateViewHolder")
         val binding = CardPostBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return PostViewHolder(binding, onInteractionListener)
     }
@@ -33,7 +32,6 @@ class PostsAdapter(private val onInteractionListener: OnInteractionListener):  R
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
         val post = list[position]
-        Log.i("pi", post.published)
         holder.bind(post)
     }
 }
@@ -43,7 +41,6 @@ class PostViewHolder(
     private val onInteractionListener: OnInteractionListener,
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(post: Post) {
-        Log.i("pi", "PostViewHolder bind")
         binding.apply {
             author.text = post.author
             published.text = post.published

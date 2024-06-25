@@ -33,8 +33,7 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        Log.i("pi", "MainActivity")
-
+        binding.list.adapter = adapter
         viewModel.data.observe(this) { posts ->
             adapter.list = posts
         }
