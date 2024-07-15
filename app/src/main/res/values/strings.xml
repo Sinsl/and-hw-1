@@ -2,4 +2,9 @@
 <resources>
     <string name="app_name">NMedia</string>
     <string name="nmedia">NMedia!</string>
+    <string name="desc_post_save">save</string>
+    <string name="menu_remove">Remove</string>
+    <string name="menu_edit">Edit</string>
+    <string name="error_empty_content">Empty content</string>
+    <string name="edit_title">Edit Message</string>
 </resources>

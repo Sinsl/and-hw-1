@@ -3,6 +3,7 @@ package ru.netology.nmedia.adapter
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.widget.PopupMenu
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -15,6 +16,8 @@ interface OnInteractionListener {
     fun like(post: Post)
     fun share(post: Post)
     fun view(post: Post)
+    fun  remove(post: Post)
+    fun edit(post: Post)
 }
 
 class PostsAdapter(private val onInteractionListener: OnInteractionListener):  ListAdapter<Post, PostViewHolder>(PostDiffUtil) {
@@ -54,6 +57,24 @@ class PostViewHolder(
             }
             icEye.setOnClickListener {
                 onInteractionListener.view(post)
+            }
+            menu.setOnClickListener {
+                PopupMenu(it.context, it).apply {
+                    inflate(R.menu.options_post)
+                    setOnMenuItemClickListener { item ->
+                        when (item.itemId) {
+                            R.id.edit -> {
+                                onInteractionListener.edit(post)
+                                true
+                            }
+                            R.id.remove -> {
+                                onInteractionListener.remove(post)
+                                true
+                            }
+                            else -> false
+                        }
+                    }
+                }.show()
             }
         }
     }
