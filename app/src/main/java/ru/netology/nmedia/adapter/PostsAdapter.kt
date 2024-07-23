@@ -42,17 +42,19 @@ class PostViewHolder(
             author.text = post.author
             published.text = post.published
             postContent.text = post.content
-            like.setImageResource(
-                if (post.likedByMe) R.drawable.baseline_favorite_24 else R.drawable.baseline_favorite_border_24
-            )
-            likeCount.text = countToString(post.likeCount)
-            shareCount.text = countToString(post.shareCount)
+            likeBtn.isChecked = post.likedByMe
+            likeBtn.text = countToString(post.likeCount)
+//            like.setImageResource(
+//                if (post.likedByMe) R.drawable.baseline_favorite_24 else R.drawable.baseline_favorite_border_24
+//            )
+//            likeCount.text = countToString(post.likeCount)
+            shareBtn.text = countToString(post.shareCount)
             viewCount.text = countToString(post.viewCount)
 
-            like.setOnClickListener {
+            likeBtn.setOnClickListener {
                 onInteractionListener.like(post)
             }
-            share.setOnClickListener {
+            shareBtn.setOnClickListener {
                 onInteractionListener.share(post)
             }
             icEye.setOnClickListener {

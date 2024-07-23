@@ -42,6 +42,7 @@ dependencies {
     val activity_version = "1.9.0"
     val lifecycle_version = "2.8.2"
     val recyclerview_version = "1.3.2"
+    val mdc_version = "1.9.0"
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -53,6 +54,8 @@ dependencies {
     implementation("androidx.activity:activity-ktx:$activity_version")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
+    implementation("com.google.android.material:material:$mdc_version")
+
 
 //    implementation(libs.androidx.lifecycle.viewmodel.ktx)
 //    implementation(libs.androidx.lifecycle.livedata.ktx)
