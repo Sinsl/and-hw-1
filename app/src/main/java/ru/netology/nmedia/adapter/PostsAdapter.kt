@@ -88,7 +88,6 @@ class PostViewHolder(
                 }.show()
             }
             videoImg.setOnClickListener {
-                Log.i("ma", "start adapter video")
                 onInteractionListener.play(post)
             }
         }

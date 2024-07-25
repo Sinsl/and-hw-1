@@ -55,7 +55,6 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun play(post: Post) {
-                Log.i("ma", "start MA video")
                 val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(post.videoUrl))
                 startActivity(browserIntent)
             }
@@ -81,37 +80,5 @@ class MainActivity : AppCompatActivity() {
                 newPostLauncher.launch(it.content)
             }
         }
-
-
-//        viewModel.edited.observe(this) {
-//            if (it.id != 0L) {
-//                binding.content.setText(it.content)
-//                binding.content.focusAndShowKeyboard()
-//                binding.group.visibility = View.VISIBLE
-//                binding.editMessage.setText(it.content)
-//            }
-//        }
-//        binding.save.setOnClickListener {
-//            val content = binding.content.text.toString()
-//            if (content.isBlank()) {
-//                Toast.makeText(this, R.string.error_empty_content, Toast.LENGTH_SHORT).show()
-//                return@setOnClickListener
-//            }
-//            viewModel.changeContentAndSave(content)
-//
-//            binding.content.setText("")
-//            binding.editMessage.setText("")
-//            binding.group.visibility = View.GONE
-//            binding.content.clearFocus()
-//            AndroidUtils.hideKeyboard(binding.content)
-//        }
-//        binding.editClose.setOnClickListener {
-//            viewModel.clear()
-//            binding.content.setText("")
-//            binding.editMessage.setText("")
-//            binding.group.visibility = View.GONE
-//            binding.content.clearFocus()
-//            AndroidUtils.hideKeyboard(binding.content)
-//        }
     }
 }
