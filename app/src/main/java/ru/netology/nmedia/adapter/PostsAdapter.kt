@@ -50,14 +50,14 @@ class PostViewHolder(
             postContent.text = post.content
             likeBtn.isChecked = post.likedByMe
             likeBtn.text = countToString(post.likeCount)
-//            like.setImageResource(
-//                if (post.likedByMe) R.drawable.baseline_favorite_24 else R.drawable.baseline_favorite_border_24
-//            )
-//            likeCount.text = countToString(post.likeCount)
+
             shareBtn.text = countToString(post.shareCount)
             viewCount.text = countToString(post.viewCount)
+
             if (post.videoUrl.isNotBlank()) {
                 videoGroup.visibility = View.VISIBLE
+            } else {
+                videoGroup.visibility = View.GONE
             }
 
             likeBtn.setOnClickListener {

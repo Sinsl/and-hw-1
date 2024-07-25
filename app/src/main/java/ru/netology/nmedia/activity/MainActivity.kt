@@ -29,8 +29,12 @@ class MainActivity : AppCompatActivity() {
         val viewModel: PostViewModel by viewModels()
 
         val newPostLauncher = registerForActivityResult(NewPostContract) {
-            val result = it ?: return@registerForActivityResult
-            viewModel.changeContentAndSave(result)
+            if (it.isNullOrBlank()) {
+                viewModel.clear()
+                return@registerForActivityResult
+            } else {
+                viewModel.changeContentAndSave(it)
+            }
         }
 
         val adapter = PostsAdapter(object: OnInteractionListener {
