@@ -17,6 +17,7 @@ class PostRepositoryInMemoryImpl: PostRepository {
             id = nextId++,
             author = "Нетология. Университет интернет-профессий будущего",
             content = "Делиться впечатлениями о любимых фильмах легко, а что если рассказать так, чтобы все заскучали \uD83D\uDE34\n",
+            videoUrl = "https://m.youtube.com/watch?v=WhWc3b3KhnY",
             published = "22 сентября в 10:14",
             shareCount = 9999
         ),
@@ -37,6 +38,7 @@ class PostRepositoryInMemoryImpl: PostRepository {
             id = nextId++,
             author = "Нетология. Университет интернет-профессий будущего",
             content = "Диджитал давно стал частью нашей жизни: мы общаемся в социальных сетях и мессенджерах, заказываем еду, такси и оплачиваем счета через приложения.",
+            videoUrl = "https://m.youtube.com/watch?v=WhWc3b3KhnY",
             published = "20 сентября в 10:14"
         ),
         Post(

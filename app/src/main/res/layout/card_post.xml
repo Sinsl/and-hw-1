@@ -65,22 +65,62 @@
 
     <TextView
         android:id="@+id/postContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_spacing"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/barrier"
+        tools:text="@sample/posts.json/data/content" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/videoGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="videoImg, videoPlay"
+        app:layout_constraintTop_toBottomOf="@id/postContent"
+        android:visibility="gone"
+        />
+
+    <ImageView
+        android:id="@+id/videoImg"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:src="@drawable/video_prev"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toBottomOf="@id/postContent"
+        android:layout_marginTop="@dimen/common_spacing"
+        />
+    <ImageView
+        android:id="@+id/videoPlay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/barrier"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="@dimen/common_spacing"
+        android:src="@drawable/baseline_play_circle_48"
+        app:layout_constraintTop_toTopOf="@id/videoImg"
+        app:layout_constraintStart_toStartOf="@id/videoImg"
+        app:layout_constraintEnd_toEndOf="@id/videoImg"
+        app:layout_constraintBottom_toBottomOf="@id/videoImg"
+        />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#F5F5F5"
+        app:layout_constraintTop_toBottomOf="@id/videoImg"
         app:layout_constraintBottom_toTopOf="@id/barrier2"
-        android:layout_marginBottom="@dimen/common_spacing"
-        tools:text="@sample/posts.json/data/content" />
+        android:layout_marginTop="@dimen/common_spacing"
+        />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:barrierDirection="bottom"
-        app:constraint_referenced_ids="postContent"
+        app:barrierDirection="top"
+        app:constraint_referenced_ids="likeBtn, shareBtn, ic_eye, viewCount"
+        app:layout_constraintTop_toBottomOf="@id/line"
+        android:layout_marginTop="@dimen/common_spacing"
+
         />
 
     <com.google.android.material.button.MaterialButton

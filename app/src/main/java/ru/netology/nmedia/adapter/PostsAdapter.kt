@@ -1,9 +1,13 @@
 package ru.netology.nmedia.adapter
 
+import android.content.Intent
+import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.PopupMenu
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -12,12 +16,14 @@ import ru.netology.nmedia.databinding.CardPostBinding
 import ru.netology.nmedia.dto.Post
 import java.math.RoundingMode
 
+
 interface OnInteractionListener {
     fun like(post: Post)
     fun share(post: Post)
     fun view(post: Post)
     fun  remove(post: Post)
     fun edit(post: Post)
+    fun play(post: Post)
 }
 
 class PostsAdapter(private val onInteractionListener: OnInteractionListener):  ListAdapter<Post, PostViewHolder>(PostDiffUtil) {
@@ -50,6 +56,9 @@ class PostViewHolder(
 //            likeCount.text = countToString(post.likeCount)
             shareBtn.text = countToString(post.shareCount)
             viewCount.text = countToString(post.viewCount)
+            if (post.videoUrl.isNotBlank()) {
+                videoGroup.visibility = View.VISIBLE
+            }
 
             likeBtn.setOnClickListener {
                 onInteractionListener.like(post)
@@ -78,8 +87,13 @@ class PostViewHolder(
                     }
                 }.show()
             }
+            videoImg.setOnClickListener {
+                Log.i("ma", "start adapter video")
+                onInteractionListener.play(post)
+            }
         }
     }
+
 
     private  fun countToString(num: Long): String {
         val res = when(num) {

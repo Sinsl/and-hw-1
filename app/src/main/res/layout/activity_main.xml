@@ -11,118 +11,102 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toTopOf="@id/barrier5"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         tools:layout_editor_absoluteX="16dp"
         tools:listitem="@layout/card_post" />
 
-    <EditText
-        android:id="@+id/content"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/save"
-        android:background="@android:color/transparent"
-        android:hint="@string/desc_post_save"
-        android:maxLines="6"
-        android:padding="12dp"
-        android:importantForAutofill="no"
-        android:inputType="textMultiLine"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-
-    <ImageButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/save"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/baseline_check_circle_outline_24"
-        android:background="@android:color/transparent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/baseline_add_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="8dp"
         android:contentDescription="@string/desc_post_save"
         />
 
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/barrier3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:barrierDirection="top"
-        app:constraint_referenced_ids="content, save"/>
+<!--    <androidx.constraintlayout.widget.Barrier-->
+<!--        android:id="@+id/barrier3"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:barrierDirection="top"-->
+<!--        app:constraint_referenced_ids="content, save"/>-->
 
-    <ImageView
-        android:id="@+id/ic_edit"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:src="@drawable/baseline_edit_24"
-        app:layout_constraintBottom_toBottomOf="@id/group"
-        app:layout_constraintTop_toTopOf="@id/group"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintStart_toStartOf="@id/group"
-        />
-    <ImageView
-        android:id="@+id/edit_close"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:src="@drawable/baseline_close_24"
-        app:layout_constraintEnd_toEndOf="@id/group"
-        app:layout_constraintBottom_toBottomOf="@id/group"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toTopOf="@id/group"
-        />
+<!--    <ImageView-->
+<!--        android:id="@+id/ic_edit"-->
+<!--        android:layout_width="32dp"-->
+<!--        android:layout_height="32dp"-->
+<!--        android:src="@drawable/baseline_edit_24"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/group"-->
+<!--        app:layout_constraintTop_toTopOf="@id/group"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:layout_marginBottom="8dp"-->
+<!--        app:layout_constraintStart_toStartOf="@id/group"-->
+<!--        />-->
+<!--    <ImageView-->
+<!--        android:id="@+id/edit_close"-->
+<!--        android:layout_width="32dp"-->
+<!--        android:layout_height="32dp"-->
+<!--        android:src="@drawable/baseline_close_24"-->
+<!--        app:layout_constraintEnd_toEndOf="@id/group"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/group"-->
+<!--        android:layout_marginBottom="8dp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        app:layout_constraintTop_toTopOf="@id/group"-->
+<!--        />-->
 
-    <TextView
-        android:id="@+id/edit_title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/common_spacing"
-        android:layout_marginTop="8dp"
-        android:text="@string/edit_title"
-        app:layout_constraintStart_toEndOf="@id/ic_edit"
-        app:layout_constraintEnd_toStartOf="@id/edit_close"
-        app:layout_constraintTop_toTopOf="@id/group"
-        android:textColor="#2064b1"
+<!--    <TextView-->
+<!--        android:id="@+id/edit_title"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="@dimen/common_spacing"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:text="@string/edit_title"-->
+<!--        app:layout_constraintStart_toEndOf="@id/ic_edit"-->
+<!--        app:layout_constraintEnd_toStartOf="@id/edit_close"-->
+<!--        app:layout_constraintTop_toTopOf="@id/group"-->
+<!--        android:textColor="#2064b1"-->
 
-        />
+<!--        />-->
 
-    <TextView
-        android:id="@+id/edit_message"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/common_spacing"
-        android:layout_marginBottom="8dp"
-        android:ellipsize="end"
-        android:lines="1"
-        app:layout_constraintStart_toEndOf="@id/ic_edit"
-        app:layout_constraintEnd_toStartOf="@id/edit_close"
-        app:layout_constraintTop_toBottomOf="@id/edit_title"
-        android:layout_marginTop="4dp"
-        app:layout_constraintBottom_toBottomOf="@id/group"
+<!--    <TextView-->
+<!--        android:id="@+id/edit_message"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="@dimen/common_spacing"-->
+<!--        android:layout_marginBottom="8dp"-->
+<!--        android:ellipsize="end"-->
+<!--        android:lines="1"-->
+<!--        app:layout_constraintStart_toEndOf="@id/ic_edit"-->
+<!--        app:layout_constraintEnd_toStartOf="@id/edit_close"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/edit_title"-->
+<!--        android:layout_marginTop="4dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/group"-->
 
-        />
+<!--        />-->
 
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/barrier5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:barrierDirection="top"
-        app:constraint_referenced_ids="group"
-        />
+<!--    <androidx.constraintlayout.widget.Barrier-->
+<!--        android:id="@+id/barrier5"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:barrierDirection="top"-->
+<!--        app:constraint_referenced_ids="group"-->
+<!--        />-->
 
-    <androidx.constraintlayout.widget.Group
-        android:id="@+id/group"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:constraint_referenced_ids="ic_edit, edit_close, edit_title, edit_message"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/barrier5"
-        app:layout_constraintBottom_toBottomOf="@id/barrier3"
-        android:visibility="gone"
-        />
+<!--    <androidx.constraintlayout.widget.Group-->
+<!--        android:id="@+id/group"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="0dp"-->
+<!--        app:constraint_referenced_ids="ic_edit, edit_close, edit_title, edit_message"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="@id/barrier5"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/barrier3"-->
+<!--        android:visibility="gone"-->
+<!--        />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

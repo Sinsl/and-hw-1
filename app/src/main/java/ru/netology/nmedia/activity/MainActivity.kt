@@ -1,10 +1,13 @@
 package ru.netology.nmedia.activity
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.launch
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import ru.netology.nmedia.R
@@ -24,6 +27,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val viewModel: PostViewModel by viewModels()
+
+        val newPostLauncher = registerForActivityResult(NewPostContract) {
+            val result = it ?: return@registerForActivityResult
+            viewModel.changeContentAndSave(result)
+        }
+
         val adapter = PostsAdapter(object: OnInteractionListener {
             override fun like(post: Post) {
                 viewModel.like(post.id)
@@ -44,6 +53,13 @@ class MainActivity : AppCompatActivity() {
             override fun edit(post: Post) {
                 viewModel.edit(post)
             }
+
+            override fun play(post: Post) {
+                Log.i("ma", "start MA video")
+                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(post.videoUrl))
+                startActivity(browserIntent)
+            }
+
         })
 
         binding.list.adapter = adapter
@@ -56,36 +72,46 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        binding.save.setOnClickListener {
+            newPostLauncher.launch("")
+        }
 
         viewModel.edited.observe(this) {
             if (it.id != 0L) {
-                binding.content.setText(it.content)
-                binding.content.focusAndShowKeyboard()
-                binding.group.visibility = View.VISIBLE
-                binding.editMessage.setText(it.content)
+                newPostLauncher.launch(it.content)
             }
         }
-        binding.save.setOnClickListener {
-            val content = binding.content.text.toString()
-            if (content.isBlank()) {
-                Toast.makeText(this, R.string.error_empty_content, Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-            viewModel.changeContentAndSave(content)
 
-            binding.content.setText("")
-            binding.editMessage.setText("")
-            binding.group.visibility = View.GONE
-            binding.content.clearFocus()
-            AndroidUtils.hideKeyboard(binding.content)
-        }
-        binding.editClose.setOnClickListener {
-            viewModel.clear()
-            binding.content.setText("")
-            binding.editMessage.setText("")
-            binding.group.visibility = View.GONE
-            binding.content.clearFocus()
-            AndroidUtils.hideKeyboard(binding.content)
-        }
+
+//        viewModel.edited.observe(this) {
+//            if (it.id != 0L) {
+//                binding.content.setText(it.content)
+//                binding.content.focusAndShowKeyboard()
+//                binding.group.visibility = View.VISIBLE
+//                binding.editMessage.setText(it.content)
+//            }
+//        }
+//        binding.save.setOnClickListener {
+//            val content = binding.content.text.toString()
+//            if (content.isBlank()) {
+//                Toast.makeText(this, R.string.error_empty_content, Toast.LENGTH_SHORT).show()
+//                return@setOnClickListener
+//            }
+//            viewModel.changeContentAndSave(content)
+//
+//            binding.content.setText("")
+//            binding.editMessage.setText("")
+//            binding.group.visibility = View.GONE
+//            binding.content.clearFocus()
+//            AndroidUtils.hideKeyboard(binding.content)
+//        }
+//        binding.editClose.setOnClickListener {
+//            viewModel.clear()
+//            binding.content.setText("")
+//            binding.editMessage.setText("")
+//            binding.group.visibility = View.GONE
+//            binding.content.clearFocus()
+//            AndroidUtils.hideKeyboard(binding.content)
+//        }
     }
 }
